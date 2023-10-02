@@ -10,6 +10,7 @@ const Home = () => {
         <div>
             {currentUser.email}
             <button onClick={() => signOut(auth)}>LogOut</button>
+            {currentUser.displayName}
         </div>
     );
 }

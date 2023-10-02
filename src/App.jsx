@@ -18,10 +18,9 @@ function App() {
   }
   return (
     <div className="App">
-      {/* <Login /> */}
       <BrowserRouter>
         <Routes>
-          <Route path="/">
+          <Route path="/home">
             <Route index element={<ProtectedRouter >
               <Home />
             </ProtectedRouter >} />
