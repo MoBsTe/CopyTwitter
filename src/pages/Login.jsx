@@ -15,7 +15,7 @@ const Login = () => {
         const password = e.target[1].value;
         try {
             await signInWithEmailAndPassword(auth, email, password)
-            navigate('/home')
+            navigate('/')
             console.log(auth)
         } catch (err) {
             setErr(true);

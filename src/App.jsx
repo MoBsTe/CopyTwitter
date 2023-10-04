@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/home">
+          <Route path="/">
             <Route index element={<ProtectedRouter >
               <Home />
             </ProtectedRouter >} />

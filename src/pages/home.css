@@ -1,0 +1,13 @@
+.home {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbarhome, .post, .bar {
+    width: calc(100%/3);
+}
+
+.post {
+    height: 100vh;
+}
