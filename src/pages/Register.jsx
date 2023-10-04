@@ -5,14 +5,12 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { BsTwitter } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import './register.css';
-const Register = () => {
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    const [err, setErr] = useState(false);
 
+
+const Register = () => {
+    const [err, setErr] = useState(false);
     const handleRegister = async (e) => {
         e.preventDefault();
-        // const auth = getAuth();
         const displayName = e.target[0].value;
         const email = e.target[1].value;
         const password = e.target[2].value;

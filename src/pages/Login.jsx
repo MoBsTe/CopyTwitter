@@ -34,7 +34,6 @@ const Login = () => {
                     <h2>Login to Twitter account</h2>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    {/* <input type="text" placeholder='Display Name' /> */}
                     <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' />
                     <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder='Password' />
                     <button type='submit'>Login</button>

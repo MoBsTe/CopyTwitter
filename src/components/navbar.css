@@ -97,6 +97,7 @@
 .userName {
     font-size: 20px;
     padding: 0px 10px;
+    font-family: 'Merriweather', serif;
 }
 
 .userInfo-settings svg {

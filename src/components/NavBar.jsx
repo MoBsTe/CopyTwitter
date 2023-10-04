@@ -14,6 +14,8 @@ import { RiMoreFill } from 'react-icons/ri'
 import { signOut } from '@firebase/auth';
 import { auth } from '../firebase';
 import './navbar.css'
+
+
 const NavBar = () => {
     const { currentUser } = useContext(AuthContext);
     return (

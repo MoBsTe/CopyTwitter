@@ -1,5 +1,7 @@
 import React from 'react';
 import './post.css'
+
+
 const Post = ({ text }) => {
     return (
         <div className='postitem'>

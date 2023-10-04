@@ -1,6 +1,8 @@
 import React from 'react';
 import Post from './Post';
 import './postlist.css'
+
+
 const PostList = () => {
     return (
         <div className='postlist'>
