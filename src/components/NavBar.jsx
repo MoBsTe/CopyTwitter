@@ -7,6 +7,7 @@ import { IoNotificationsOutline } from 'react-icons/io5'
 import { LuMessagesSquare } from 'react-icons/lu'
 import { GoChecklist } from 'react-icons/go'
 import { BsFillBookmarksFill } from 'react-icons/bs'
+import { AiOutlineUser } from 'react-icons/ai'
 import { TbUsers } from 'react-icons/tb'
 import { BiUser } from 'react-icons/bi'
 import { CgMoreO } from 'react-icons/cg'
@@ -16,7 +17,7 @@ import { auth } from '../firebase';
 import './navbar.css'
 
 
-const NavBar = () => {
+const NavBar = ({ openModal }) => {
     const { currentUser } = useContext(AuthContext);
     return (
         <div className='navbar'>
@@ -81,7 +82,7 @@ const NavBar = () => {
                         </span>
                     </div>
                     <div className='button-nav'>
-                        <div className='bnt'>Post</div>
+                        <div className='bnt' onClick={() => openModal()}>Post</div>
                     </div>
                 </div>
                 <div className='user-info'>
