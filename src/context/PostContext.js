@@ -10,7 +10,7 @@ export const PostContext = createContext()
 export const PostContextProvider = ({ children }) => {
     const { currentUser } = useContext(AuthContext);
     const INITIAL_STATE = {
-        chatId: 'null',
+        postId: 'null',
         user: {}
     }
 
@@ -20,7 +20,7 @@ export const PostContextProvider = ({ children }) => {
                 console.log('CHANGE');
                 return {
                     user: action.payload,
-                    chatId:
+                    postId:
                         currentUser.uid > action.payload.uid ? currentUser.uid + action.payload.uid : action.payload.uid + currentUser.uid
                 }
             default:

@@ -4,7 +4,7 @@
     align-items: center;
     /* height: 100vh; */
     flex-direction: column;
-    border-right: 1px solid gray;
-    border-left: 1px solid gray;
+    /* border-right: 1px solid gray;
+    border-left: 1px solid gray; */
     padding: 10px 10px;
 }

@@ -6,7 +6,7 @@
     /* background-color: aqua; */
     padding: 10px;
     position: fixed;
-    /* border-right: 1px solid grey; */
+    border-right: 1px solid grey;
 }
 
 .container {

@@ -1,22 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { PostContext } from '../context/PostContext';
 import './post.css'
 
 
-const Post = ({ text }) => {
+const Post = ({ message }) => {
     const { currentUser } = useContext(AuthContext);
+    const { data } = useContext(PostContext);
+    const ref = useRef();
+
+    useEffect(() => {
+        ref.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [message])
+
     return (
         <div className='postitem'>
             <div className='userInfo'>
                 <div className='userSender'>
-                    <img src={currentUser.photoURL} alt="" />
+                    <img src=
+                        {message.senderId === currentUser.uid ? currentUser.photoURL : data.user.photoURL} alt="" />
+
                 </div>
                 <div className='userSenderName'>
-                    @{currentUser.displayName}
+                    @{message.senderId === currentUser.displayName ? currentUser.displayName : data.user.displayName}
+
                 </div>
             </div>
             <div className='post-title'>
-                {text}
+                {message.text}
+
             </div>
         </div>
     );

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { auth, storage } from '../firebase';
+import { auth, storage, db } from '../firebase';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { BsTwitter } from 'react-icons/bs'
+import { doc, setDoc } from "firebase/firestore";
 import { Link } from 'react-router-dom'
 import './register.css';
 
@@ -24,7 +25,18 @@ const Register = () => {
                         await updateProfile(res.user, {
                             displayName,
                             photoURL: downloadURL,
-                        })
+                        });
+                        await setDoc(doc(db, "users", res.user.uid), {
+                            uid: res.user.uid,
+                            displayName, // displayName:displayName
+                            email,
+                            photoURL: downloadURL,
+                        });
+                        await setDoc(doc(db, "usersPosts", res.user.uid), {})
+                        e.target[0].value = '';
+                        e.target[1].value = '';
+                        e.target[2].value = '';
+                        e.target[3].files[0] = null;
                     } catch (err) {
                         console.log(err);
                         setErr(true);
