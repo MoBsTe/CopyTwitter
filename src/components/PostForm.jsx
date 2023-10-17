@@ -19,17 +19,13 @@ import './postform.css'
 const PostForm = ({ setIsOpen }) => {
     const [err, setErr] = useState(false);
     const { currentUser } = useContext(AuthContext);
-    const [user, setUser] = useState(currentUser.uid);
     const [text, setText] = useState('');
     const [img, setImg] = useState(null);
     const { data } = useContext(PostContext);
 
 
     const handleSend = async (e) => {
-        // e.preventDefault();
-        // const combinedId = currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
         try {
-            // setUser(doc.data());
             const res = await getDoc(doc(db, 'posts', data.postId));
             if (!res.exists()) {
                 await setDoc(doc(db, 'posts', data.postId), { messages: [] });
@@ -50,6 +46,8 @@ const PostForm = ({ setIsOpen }) => {
                                     id: uuid(),
                                     text,
                                     senderId: currentUser.uid,
+                                    senderName: currentUser.displayName,
+                                    senderImg: currentUser.photoURL,
                                     date: Timestamp.now(),
                                     img: downloadURL,
                                 }),
@@ -63,6 +61,8 @@ const PostForm = ({ setIsOpen }) => {
                         id: uuid(),
                         text,
                         senderId: currentUser.uid,
+                        senderName: currentUser.displayName,
+                        senderImg: currentUser.photoURL,
                         date: Timestamp.now(),
                     }),
                 });
@@ -85,6 +85,7 @@ const PostForm = ({ setIsOpen }) => {
         }
         setText('');
         setImg(null);
+        setIsOpen(false);
     };
     return (
         <div className='postform'>

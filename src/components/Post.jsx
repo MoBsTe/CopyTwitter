@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { PostContext } from '../context/PostContext';
+import { AiOutlineUser } from 'react-icons/ai'
 import './post.css'
 
 
 const Post = ({ message }) => {
     const { currentUser } = useContext(AuthContext);
-    const { data } = useContext(PostContext);
     const ref = useRef();
-
     useEffect(() => {
         ref.current?.scrollIntoView({ behavior: 'smooth' });
     }, [message])
@@ -18,11 +16,10 @@ const Post = ({ message }) => {
             <div className='userInfo'>
                 <div className='userSender'>
                     <img src=
-                        {message.senderId === currentUser.uid ? currentUser.photoURL : data.user.photoURL} alt="" />
-
+                        {message.senderImg} alt="" />
                 </div>
                 <div className='userSenderName'>
-                    @{message.senderId === currentUser.displayName ? currentUser.displayName : data.user.displayName}
+                    @{message.senderName}
 
                 </div>
             </div>
@@ -30,6 +27,10 @@ const Post = ({ message }) => {
                 {message.text}
 
             </div>
+            {
+                currentUser.uid === message.senderId &&
+                <div> hello</div>
+            }
         </div>
     );
 }

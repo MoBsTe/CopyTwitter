@@ -4,9 +4,12 @@ import Bar from '../components/Bar';
 import React, { useState } from 'react';
 import './home.css'
 import PostForm from '../components/PostForm';
+import { Routes, Route } from 'react-router-dom';
+import Profile from '../components/Profile';
 
 
 const Home = () => {
+
     const [isOpen, setIsOpen] = useState(false);
     const openModal = () => {
         setIsOpen(true);
@@ -16,16 +19,19 @@ const Home = () => {
             <div className='navbarhome'>
                 <NavBar openModal={openModal} />
             </div>
+
             <div className='post'>
-                <PostList isOpen={isOpen} />
+                <Routes>
+                    <Route path='postsList' element={<PostList />} />
+                    <Route path='profile' element={<Profile />} />
+                </Routes>
             </div>
+
             <div className='bar'>
                 <Bar />
             </div>
             {isOpen &&
-
                 <PostForm setIsOpen={setIsOpen} />
-
             }
         </div>
     );

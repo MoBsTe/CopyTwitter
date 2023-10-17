@@ -8,6 +8,7 @@ import { LuMessagesSquare } from 'react-icons/lu'
 import { GoChecklist } from 'react-icons/go'
 import { BsFillBookmarksFill } from 'react-icons/bs'
 import { AiOutlineUser } from 'react-icons/ai'
+import { Link } from 'react-router-dom';
 import { TbUsers } from 'react-icons/tb'
 import { BiUser } from 'react-icons/bi'
 import { CgMoreO } from 'react-icons/cg'
@@ -23,10 +24,10 @@ const NavBar = ({ openModal }) => {
         <div className='navbar'>
             <div className='container'>
 
-                <div className='logo'>
-                    <BsTwitter />
-                </div>
                 <div className='nav'>
+                    <div className='logo'>
+                        <BsTwitter />
+                    </div>
                     <div className='nav-item'>
                         <AiFillHome />
                         <span>
@@ -72,7 +73,8 @@ const NavBar = ({ openModal }) => {
                     <div className='nav-item'>
                         <BiUser />
                         <span>
-                            Profile
+                            <Link to="home/profile">Profile</Link>
+                            {/* Profile */}
                         </span>
                     </div>
                     <div className='nav-item'>

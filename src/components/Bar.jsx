@@ -2,8 +2,8 @@ import React from 'react';
 import './bar.css'
 const Bar = () => {
     return (
-        <div className='bar'>
-            dsfsdfds
+        <div className='barr'>
+            Bar
         </div>
     );
 }

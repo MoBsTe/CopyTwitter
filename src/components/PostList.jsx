@@ -8,9 +8,6 @@ import './postlist.css'
 
 
 const PostList = () => {
-    const [posts, setPosts] = useState([]);
-    const { currentUser } = useContext(AuthContext);
-    const { dispatch } = useContext(PostContext)
     const [messages, setMessages] = useState([]);
     const { data } = useContext(PostContext);
     useEffect(() => {
@@ -24,28 +21,15 @@ const PostList = () => {
     }, [data.postId]);
 
 
-    useEffect(() => {
-        const getPosts = () => {
-            const unsub = onSnapshot(doc(db, 'usersPosts', currentUser.uid), (doc) => {
-                console.log(doc);
-                setPosts(doc.data());
-            })
-            return () => {
-                unsub();
-            };
-        };
-        currentUser.uid && getPosts();
-    }, [currentUser.uid]);
-
-
     console.log(messages)
-
+    const reversedMessages = [...messages].reverse();
     return (
         <div className='postlist'>
-            {messages.map((m) => (
+            Posts
+            {reversedMessages.map((m) => (
                 <Post message={m} key={m.id} />
             ))}
-
+            sfsdfsdfsdfsdfsdfsdfsd
         </div>
     );
 }
