@@ -5,7 +5,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { BsTwitter } from 'react-icons/bs'
 import { doc, setDoc } from "firebase/firestore";
 import { Link } from 'react-router-dom'
-import './register.css';
+import logo from '../img/back-twitter 1.png'
 
 
 const Register = () => {
@@ -51,21 +51,52 @@ const Register = () => {
 
     return (
         <div className='register'>
-            <div className='left-Logo'>
-                <BsTwitter />
+            <div className='main-img'>
+                {/* <BsTwitter /> */}
+                <img src={logo} alt="" />
             </div>
-            <div className='right-form'>
-                <div className='title'>
+            <div className='main__right-side'>
+                <div className='main__right-side-title'>
                     <h2>Register Twitter account</h2>
                 </div>
-                <form onSubmit={handleRegister}>
-                    <input type="text" placeholder='Display Name' />
-                    <input type="email" placeholder='Email' />
-                    <input type="password" placeholder='Password' />
+                {/* <form onSubmit={handleRegister}>
+                    <div className='register-container'>
+                        <input type="text" />
+                        <label>Display Name</label>
+                    </div>
+                    <div className='register-container'>
+                        <input type="email" />
+                        <label>Email</label>
+                    </div>
+                    <div className='register-container'>
+                        <input type="password" />
+                        <label>Password</label>
+                    </div>
                     <input type="file" id="file" />
                     <button type='submit'>Sign Up</button>
+                </form> */}
+                <form >
+                    <div className="input-box">
+                        <input type="text" required />
+                        <label>Username</label>
+                    </div>
+
+                    <div className="input-box">
+                        <input type="email" required />
+                        <label>Email</label>
+                    </div>
+
+                    <div className="input-box">
+                        <input type="password" required />
+                        <label>Password</label>
+                    </div>
+
+                    <button type="submit">Register</button>
+                    <div className="login-register">
+                        <span>Already have an account?<Link to="/login">Login</Link></span>
+                    </div>
                 </form>
-                <span>Already have an account?<Link to="/login">Login</Link></span>
+
             </div>
         </div>
     );

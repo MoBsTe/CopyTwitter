@@ -4,10 +4,9 @@ import { db } from "../firebase";
 import Post from './Post';
 import { AuthContext } from '../context/AuthContext';
 import { PostContext } from '../context/PostContext';
-import './postlist.css'
 
 
-const PostList = () => {
+const PostItems = () => {
     const [messages, setMessages] = useState([]);
     const { data } = useContext(PostContext);
     useEffect(() => {
@@ -29,9 +28,8 @@ const PostList = () => {
             {reversedMessages.map((m) => (
                 <Post message={m} key={m.id} />
             ))}
-            sfsdfsdfsdfsdfsdfsdfsd
         </div>
     );
 }
 
-export default PostList;
+export default PostItems;

@@ -15,15 +15,14 @@ import { CgMoreO } from 'react-icons/cg'
 import { RiMoreFill } from 'react-icons/ri'
 import { signOut } from '@firebase/auth';
 import { auth } from '../firebase';
-import './navbar.css'
 
 
 const NavBar = ({ openModal }) => {
     const { currentUser } = useContext(AuthContext);
+
     return (
         <div className='navbar'>
             <div className='container'>
-
                 <div className='nav'>
                     <div className='logo'>
                         <BsTwitter />
@@ -31,7 +30,9 @@ const NavBar = ({ openModal }) => {
                     <div className='nav-item'>
                         <AiFillHome />
                         <span>
-                            Home
+                            <Link to='/'>
+                                Home
+                            </Link>
                         </span>
                     </div>
                     <div className='nav-item'>
@@ -73,7 +74,7 @@ const NavBar = ({ openModal }) => {
                     <div className='nav-item'>
                         <BiUser />
                         <span>
-                            <Link to="home/profile">Profile</Link>
+                            <Link to={`home/profile/${currentUser.displayName}`}>Profile</Link>
                             {/* Profile */}
                         </span>
                     </div>
@@ -89,13 +90,13 @@ const NavBar = ({ openModal }) => {
                 </div>
                 <div className='user-info'>
                     <div className='user-info-conntainer'>
-                        <div className='userImg'>
+                        <div className='user-img'>
                             <img src={currentUser.photoURL} alt='' />
                         </div>
-                        <div className='userName'>
+                        <div className='user-name'>
                             @{currentUser.displayName}
                         </div>
-                        <div className='userInfo-settings'>
+                        <div className='user-info-settings'>
                             <RiMoreFill onClick={() => signOut(auth)} />
                         </div>
                     </div>

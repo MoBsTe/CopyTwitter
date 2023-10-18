@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { AiOutlineUser } from 'react-icons/ai'
-import './post.css'
 
 
 const Post = ({ message }) => {

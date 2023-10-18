@@ -14,7 +14,7 @@ import {
 import { db, storage } from '../firebase';
 import { v4 as uuid } from 'uuid';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import './postform.css'
+
 
 const PostForm = ({ setIsOpen }) => {
     const [err, setErr] = useState(false);
@@ -95,7 +95,6 @@ const PostForm = ({ setIsOpen }) => {
                     <div className='close-btn'>
                         <AiOutlineClose onClick={() => setIsOpen(false)} />
                     </div>
-
                 </div>
                 <input value={text} onChange={(e) => setText(e.target.value)} className='userText' type="text" placeholder='Type massege...' />
                 <input onChange={(e) => setImg(e.target.files[0])} type="file" />

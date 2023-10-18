@@ -3,8 +3,7 @@ import { BsTwitter } from 'react-icons/bs'
 import { Link, useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
-import './login.css'
-
+import logo from '../img/back-twitter 1.png'
 
 const Login = () => {
     const [err, setErr] = useState(false);
@@ -15,7 +14,7 @@ const Login = () => {
         const password = e.target[1].value;
         try {
             await signInWithEmailAndPassword(auth, email, password)
-            navigate('home')
+            navigate('/')
             console.log(auth)
         } catch (err) {
             setErr(true);
@@ -23,23 +22,32 @@ const Login = () => {
     }
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    return (
 
+
+    return (
         <div className='login'>
-            <div className='left-Logo'>
-                <BsTwitter />
+            <div className='main-img'>
+                {/* <BsTwitter /> */}
+                <img src={logo} alt="" />
             </div>
-            <div className='right-form'>
-                <div className='title'>
+            <div className='main__right-side'>
+                <div className='main__right-side-title'>
                     <h2>Login to Twitter account</h2>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' />
-                    <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder='Password' />
-                    <button type='submit'>Login</button>
-                    {err && <span>Somthing went wrong</span>}
+                    <div className="input-box">
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required />
+                        <label>Email</label>
+                    </div>
+                    <div className="input-box">
+                        <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" required />
+                        <label>Password</label>
+                    </div>
+                    <button type="submit" >Login</button>
+                    <div className="login-register">
+                        <span>Don't have an account?<Link to="/register">Sign up</Link></span>
+                    </div>
                 </form>
-                <span>Don't have an account?<Link to="/register">Sign up</Link></span>
             </div>
         </div>
     );
