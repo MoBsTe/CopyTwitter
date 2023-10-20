@@ -1,10 +1,16 @@
 import PostItems from '../components/PostItems';
 import NavBar from '../components/NavBar';
 import Bar from '../components/Bar';
-import React, { useState, useContext } from 'react';
+import React, {
+    useState,
+    useContext
+} from 'react';
 import { AuthContext } from '../context/AuthContext';
 import PostForm from '../components/PostForm';
-import { Routes, Route } from 'react-router-dom';
+import {
+    Routes,
+    Route
+} from 'react-router-dom';
 import Profile from '../components/Profile';
 
 

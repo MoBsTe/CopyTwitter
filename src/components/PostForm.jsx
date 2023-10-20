@@ -1,4 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React,
+{
+    useContext,
+    useState
+} from 'react';
 import { AiOutlineClose } from 'react-icons/ai'
 import { AuthContext } from '../context/AuthContext';
 import { PostContext } from '../context/PostContext';

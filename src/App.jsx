@@ -3,7 +3,12 @@ import React, { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 import Register from './pages/Register';
 import PostItems from './components/PostItems';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate
+} from 'react-router-dom'
 import Profile from './components/Profile'
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -29,7 +34,11 @@ function App() {
           {/* <Route index element={<Home />} /> */}
           <Route path='home/*' element={<Home />} >
             <Route path='postsList' element={<PostItems />} />
-            <Route path={`profile/${currentUser.displayName}`} element={<Profile />} />
+            {
+              currentUser && (
+                <Route path={`profile/${currentUser.displayName}`} element={<Profile />} />
+              )
+            }
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

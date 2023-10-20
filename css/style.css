@@ -21,12 +21,6 @@
   width: 1121px;
   height: 100vh;
 }
-.login .main-img svg,
-.register .main-img svg {
-  width: 350px;
-  height: 350px;
-  color: #fff;
-}
 .login .main__right-side,
 .register .main__right-side {
   display: flex;

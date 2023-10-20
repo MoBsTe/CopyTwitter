@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
-import { auth, storage, db } from '../firebase';
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import React,
+{ useState } from 'react';
+import {
+    auth,
+    storage,
+    db
+} from '../firebase';
+import {
+    createUserWithEmailAndPassword,
+    updateProfile
+} from "firebase/auth";
+import {
+    getDownloadURL,
+    ref,
+    uploadBytesResumable
+} from 'firebase/storage';
 import { BsTwitter } from 'react-icons/bs'
 import { doc, setDoc } from "firebase/firestore";
 import { Link } from 'react-router-dom'
-import logo from '../img/back-twitter 1.png'
 
 
 const Register = () => {
@@ -51,52 +62,37 @@ const Register = () => {
 
     return (
         <div className='register'>
-            <div className='main-img'>
-                {/* <BsTwitter /> */}
-                <img src={logo} alt="" />
-            </div>
-            <div className='main__right-side'>
-                <div className='main__right-side-title'>
-                    <h2>Register Twitter account</h2>
+            <div className='container'>
+                <div className='logo-side'>
+                    <BsTwitter />
+                    <div className='logo-side-title'>
+                        <p>
+                            Already have an account ?</p>
+                    </div>
+                    <div className='logo-side-button'>
+                        <Link to='/login'>Log in</Link>
+                    </div>
                 </div>
-                {/* <form onSubmit={handleRegister}>
-                    <div className='register-container'>
-                        <input type="text" />
-                        <label>Display Name</label>
+                <div className='form-side'>
+                    <div className='form-side__title'>
+                        <h2>Join Twitter today and start exploring the world's thoughts.</h2>
                     </div>
-                    <div className='register-container'>
-                        <input type="email" />
-                        <label>Email</label>
-                    </div>
-                    <div className='register-container'>
-                        <input type="password" />
-                        <label>Password</label>
-                    </div>
-                    <input type="file" id="file" />
-                    <button type='submit'>Sign Up</button>
-                </form> */}
-                <form >
-                    <div className="input-box">
-                        <input type="text" required />
-                        <label>Username</label>
-                    </div>
-
-                    <div className="input-box">
-                        <input type="email" required />
-                        <label>Email</label>
-                    </div>
-
-                    <div className="input-box">
-                        <input type="password" required />
-                        <label>Password</label>
-                    </div>
-
-                    <button type="submit">Register</button>
-                    <div className="login-register">
-                        <span>Already have an account?<Link to="/login">Login</Link></span>
-                    </div>
-                </form>
-
+                    <form onSubmit={handleRegister}>
+                        <div className="input-box">
+                            <input type="text" required />
+                            <label>Display Name</label>
+                        </div>
+                        <div className="input-box">
+                            <input type="email" required />
+                            <label>Email</label>
+                        </div>
+                        <div className="input-box">
+                            <input type="password" required />
+                            <label>Password</label>
+                        </div>
+                        <button type="submit">Sign up</button>
+                    </form>
+                </div>
             </div>
         </div>
     );

@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React,
+{ useState } from 'react'
 import { BsTwitter } from 'react-icons/bs'
-import { Link, useNavigate } from 'react-router-dom'
+import {
+    Link,
+    useNavigate
+} from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
-import logo from '../img/back-twitter 1.png'
 
 const Login = () => {
     const [err, setErr] = useState(false);
@@ -26,28 +29,33 @@ const Login = () => {
 
     return (
         <div className='login'>
-            <div className='main-img'>
-                {/* <BsTwitter /> */}
-                <img src={logo} alt="" />
-            </div>
-            <div className='main__right-side'>
-                <div className='main__right-side-title'>
-                    <h2>Login to Twitter account</h2>
+            <div className='container'>
+                <div className='logo-side'>
+                    <BsTwitter />
+                    <div className='logo-side-title'>
+                        <p>
+                            Don't have an account?</p>
+                    </div>
+                    <div className='logo-side-button'>
+                        <Link to='/register'>Sign up</Link>
+                    </div>
                 </div>
-                <form onSubmit={handleSubmit}>
-                    <div className="input-box">
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required />
-                        <label>Email</label>
+                <div className='form-side'>
+                    <div className='form-side__title'>
+                        <h2>Join Twitter today and start exploring the world's thoughts.</h2>
                     </div>
-                    <div className="input-box">
-                        <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" required />
-                        <label>Password</label>
-                    </div>
-                    <button type="submit" >Login</button>
-                    <div className="login-register">
-                        <span>Don't have an account?<Link to="/register">Sign up</Link></span>
-                    </div>
-                </form>
+                    <form onSubmit={handleSubmit}>
+                        <div className="input-box">
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required />
+                            <label>Email</label>
+                        </div>
+                        <div className="input-box">
+                            <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" required />
+                            <label>Password</label>
+                        </div>
+                        <button type="submit" >Login</button>
+                    </form>
+                </div>
             </div>
         </div>
     );
