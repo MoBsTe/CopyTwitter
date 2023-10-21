@@ -161,6 +161,33 @@
     //         display: none;
     //     }
     // }
+    @media (max-width: 800px) {
+
+        .navbarhome,
+        .post {
+            display: flex;
+
+        }
+
+        .navbarhome {
+            display: flex;
+            max-width: 20%;
+        }
+    }
+
+    @media (max-width: 700px) {
+
+        .navbarhome {
+            display: none;
+
+        }
+
+        .post {
+            border-left: 1px solid gray;
+            border-right: 1px solid gray;
+        }
+
+    }
 }
 
 
@@ -172,11 +199,13 @@
     display: flex;
     justify-content: end;
 
-    // @media (max-width: 1180px) {
-    //     .home .navbarhome {
-    //         padding-right: 0px;
-    //     }
-    // }
+    @media (max-width: 800px) {
+        .navbarhome {
+            min-width:
+                70px;
+        }
+    }
+
     .navbar {
         display: flex;
         justify-content: end;
@@ -186,12 +215,28 @@
         // background-color: #162938;
         padding: 30px;
         position: fixed;
+
+    }
+
+    @media (max-width: 1114px) {
+        .navbar {
+            max-width: 70px;
+            padding: 0px;
+        }
     }
 
     .nav {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    @media (max-width: 1114px) {
+        .nav-items {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
     }
 
     .nav-item {
@@ -202,6 +247,21 @@
         padding: 10px;
         border-radius: 10px;
     }
+
+    @media (max-width: 1114px) {
+        .nav-item {
+            align-items: end;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .nav-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
 
     .nav-item:hover {
         background-color: #415f75;
@@ -219,6 +279,13 @@
         font-size: 20px;
     }
 
+    @media (max-width: 1114px) {
+        .nav-item span a {
+            display: none;
+        }
+    }
+
+
     .nav button {
         width: 100%;
         padding: 10px 0;
@@ -231,6 +298,13 @@
         // margin-bottom: 10px;
         margin: 30px 0px 10px 0px;
     }
+
+    @media (max-width: 1114px) {
+        .nav button {
+            display: none;
+        }
+    }
+
 
     .nav button:hover {
         background: transparent;
@@ -246,6 +320,14 @@
         padding: 5px;
         border-radius: 10px;
         transition: all 1s ease;
+
+        @media (max-width: 1114px) {
+
+            .accoutnMenu__currentUser-UserName,
+            .accountMenu-signOut svg {
+                display: none;
+            }
+        }
     }
 
     .accountMenu:hover {
@@ -299,6 +381,12 @@
     height: 100vh;
 }
 
+@media (max-width: 1114px) {
+
+    .bar {
+        display: none;
+    }
+}
 
 //-------------------------------------------------------------------------------------
 //Post

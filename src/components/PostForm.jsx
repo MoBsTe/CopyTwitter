@@ -11,7 +11,6 @@ import {
     setDoc,
     doc,
     updateDoc,
-    serverTimestamp,
     Timestamp,
     getDoc,
 } from 'firebase/firestore';
@@ -34,15 +33,17 @@ const PostForm = ({ setIsOpen }) => {
             if (!res.exists()) {
                 await setDoc(doc(db, 'posts', data.postId), { messages: [] });
             }
-
             if (img) {
-                const storageRef = ref(storage, uuid());
+                const objectName = uuid();
+                const storageRef = ref(storage, objectName);
                 const uploadTask = uploadBytesResumable(storageRef, img);
-
                 uploadTask.on(
+                    "state_changed",
+                    (snapshot) => {
+                    },
                     (error) => {
                         console.error("Upload error:", error);
-                        //TODO:Handle Error
+                        setErr(true);
                     },
                     () => {
                         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -61,32 +62,9 @@ const PostForm = ({ setIsOpen }) => {
                     }
                 );
             } else {
-                await updateDoc(doc(db, 'posts', data.postId), {
-                    messages: arrayUnion({
-                        id: uuid(),
-                        text,
-                        senderId: currentUser.uid,
-                        senderName: currentUser.displayName,
-                        senderImg: currentUser.photoURL,
-                        date: Timestamp.now(),
-                    }),
-                });
             }
-            await updateDoc(doc(db, 'usersPosts', currentUser.uid), {
-                [data.postId + '.lastPost']: {
-                    text,
-                },
-                [data.postId + '.date']: serverTimestamp(),
-            });
-
-            await updateDoc(doc(db, 'usersPosts', data.user.uid), {
-                [data.postId + '.lastPost']: {
-                    text,
-                },
-                [data.postId + '.date']: serverTimestamp(),
-            });
         } catch (err) {
-            setErr(true)
+            setErr(true);
         }
         setText('');
         setImg(null);
@@ -109,4 +87,3 @@ const PostForm = ({ setIsOpen }) => {
 }
 
 export default PostForm;
-// 57b53213-c267-4c17-98ef-c09a36a5c9e5

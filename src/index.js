@@ -3,11 +3,9 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { AuthContextProvider } from './context/AuthContext';
 import { PostContextProvider } from './context/PostContext';
-// import './firebase'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
   <AuthContextProvider>
     <PostContextProvider>
       <React.StrictMode>

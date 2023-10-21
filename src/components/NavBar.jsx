@@ -1,25 +1,34 @@
 import React,
-{ useContext } from 'react';
-import { BsTwitter } from 'react-icons/bs'
+{ useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { auth } from '../firebase';
+import { BsTwitter } from 'react-icons/bs'
 import { AiFillHome } from 'react-icons/ai'
 import { BsSearch } from 'react-icons/bs'
 import { IoNotificationsOutline } from 'react-icons/io5'
 import { LuMessagesSquare } from 'react-icons/lu'
 import { GoChecklist } from 'react-icons/go'
 import { BsFillBookmarksFill } from 'react-icons/bs'
-import { Link } from 'react-router-dom';
 import { TbUsers } from 'react-icons/tb'
 import { BiUser } from 'react-icons/bi'
 import { CgMoreO } from 'react-icons/cg'
 import { RiMoreFill } from 'react-icons/ri'
-import { signOut } from '@firebase/auth';
-import { auth } from '../firebase';
 
 
 const NavBar = ({ openModal }) => {
+    const [err, setErr] = useState(false)
     const { currentUser } = useContext(AuthContext);
     console.log(currentUser)
+    const navigate = useNavigate();
+    const signOut = async (e) => {
+        try {
+            await signOut(auth)
+            navigate('login')
+        } catch (err) {
+            setErr(true);
+        }
+    }
 
     return (
         <div className='navbar'>
@@ -93,8 +102,8 @@ const NavBar = ({ openModal }) => {
                         </span>
                     </div>
                     <div className='nav-item'>
-                        <CgMoreO />
                         <span>
+                            <CgMoreO />
                             <Link to='*'>
                                 More
                             </Link>
@@ -110,7 +119,7 @@ const NavBar = ({ openModal }) => {
                         @{currentUser.displayName}
                     </div>
                     <div className='accountMenu-signOut'>
-                        <RiMoreFill onClick={() => signOut(auth)} />
+                        <RiMoreFill onClick={() => signOut()} />
                     </div>
                 </div>
             </div>
