@@ -8,7 +8,6 @@ import { IoNotificationsOutline } from 'react-icons/io5'
 import { LuMessagesSquare } from 'react-icons/lu'
 import { GoChecklist } from 'react-icons/go'
 import { BsFillBookmarksFill } from 'react-icons/bs'
-import { AiOutlineUser } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { TbUsers } from 'react-icons/tb'
 import { BiUser } from 'react-icons/bi'
@@ -20,12 +19,13 @@ import { auth } from '../firebase';
 
 const NavBar = ({ openModal }) => {
     const { currentUser } = useContext(AuthContext);
+    console.log(currentUser)
 
     return (
         <div className='navbar'>
-            <div className='container'>
-                <div className='nav'>
-                    <div className='logo'>
+            <div className='nav'>
+                <div className='nav-items'>
+                    <div className='nav-item '>
                         <BsTwitter />
                     </div>
                     <div className='nav-item'>
@@ -39,67 +39,78 @@ const NavBar = ({ openModal }) => {
                     <div className='nav-item'>
                         <BsSearch />
                         <span>
-                            Explore
+                            <Link to='*'>
+                                Explore
+                            </Link>
                         </span>
                     </div>
                     <div className='nav-item'>
                         <IoNotificationsOutline />
                         <span>
-                            Notifications
+                            <Link to='*'>
+                                Notification
+                            </Link>
                         </span>
                     </div>
                     <div className='nav-item'>
                         <LuMessagesSquare />
                         <span>
-                            Messages
+                            <Link to='*'>
+                                Messages
+                            </Link>
                         </span>
                     </div>
                     <div className='nav-item'>
                         <GoChecklist />
                         <span>
-                            Lists
+                            <Link to='*'>
+                                Lists
+                            </Link>
                         </span>
                     </div>
                     <div className='nav-item'>
                         <BsFillBookmarksFill />
                         <span>
-                            Bookmarks
+                            <Link to='*'>
+                                Bookmarks
+                            </Link>
                         </span>
                     </div>
                     <div className='nav-item'>
                         <TbUsers />
                         <span>
-                            Communities
+                            <Link to='*'>
+                                Communities
+                            </Link>
                         </span>
                     </div>
                     <div className='nav-item'>
                         <BiUser />
                         <span>
-                            <Link to={`home/profile/${currentUser.displayName}`}>Profile</Link>
-                            {/* Profile */}
+                            <Link to={`/${currentUser.displayName}`}>
+                                Profile
+                            </Link>
                         </span>
                     </div>
                     <div className='nav-item'>
                         <CgMoreO />
                         <span>
-                            More
+                            <Link to='*'>
+                                More
+                            </Link>
                         </span>
                     </div>
-                    <div className='button-nav'>
-                        <div className='bnt' onClick={() => openModal()}>Post</div>
-                    </div>
+                    <button onClick={() => openModal()}>Tweet</button>
                 </div>
-                <div className='user-info'>
-                    <div className='user-info-conntainer'>
-                        <div className='user-img'>
-                            <img src={currentUser.photoURL} alt='' />
-                        </div>
-                        <div className='user-name'>
-                            @{currentUser.displayName}
-                        </div>
-                        <div className='user-info-settings'>
-                            <RiMoreFill onClick={() => signOut(auth)} />
-                        </div>
+                <div className='accountMenu'>
+                    <div className='accountMenu__currentUser-img'>
+                        <img src={currentUser.photoURL} alt="" />
+                    </div>
+                    <div className='accoutnMenu__currentUser-UserName'>
+                        @{currentUser.displayName}
+                    </div>
+                    <div className='accountMenu-signOut'>
+                        <RiMoreFill onClick={() => signOut(auth)} />
                     </div>
                 </div>
             </div>

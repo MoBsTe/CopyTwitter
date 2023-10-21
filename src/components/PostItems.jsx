@@ -18,13 +18,10 @@ const PostItems = () => {
             unSub();
         };
     }, [data.postId]);
-
-
     console.log(messages)
     const reversedMessages = [...messages].reverse();
     return (
         <div className='postlist'>
-            Posts
             {reversedMessages.map((m) => (
                 <Post message={m} key={m.id} />
             ))}

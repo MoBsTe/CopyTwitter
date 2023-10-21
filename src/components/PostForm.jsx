@@ -41,6 +41,7 @@ const PostForm = ({ setIsOpen }) => {
 
                 uploadTask.on(
                     (error) => {
+                        console.error("Upload error:", error);
                         //TODO:Handle Error
                     },
                     () => {
@@ -94,7 +95,6 @@ const PostForm = ({ setIsOpen }) => {
     return (
         <div className='postform'>
             <div className='form'>
-
                 <div className='form-btn'>
                     <div className='close-btn'>
                         <AiOutlineClose onClick={() => setIsOpen(false)} />
@@ -109,3 +109,4 @@ const PostForm = ({ setIsOpen }) => {
 }
 
 export default PostForm;
+// 57b53213-c267-4c17-98ef-c09a36a5c9e5

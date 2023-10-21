@@ -12,6 +12,7 @@ import {
     Route
 } from 'react-router-dom';
 import Profile from '../components/Profile';
+import NoPage from '../components/NoPage';
 
 
 const Home = () => {
@@ -25,11 +26,11 @@ const Home = () => {
             <div className='navbarhome'>
                 <NavBar openModal={openModal} />
             </div>
-
             <div className='post'>
                 <Routes>
+                    <Route path='*' element={<NoPage />} />
                     <Route path='/' element={<PostItems />} />
-                    <Route path={`profile/${currentUser.displayName}`} element={<Profile />} />
+                    <Route path={`/${currentUser.displayName}`} element={<Profile currentUser={currentUser} />} />
                 </Routes>
             </div>
 

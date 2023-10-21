@@ -23,10 +23,10 @@ const Register = () => {
     const [err, setErr] = useState(false);
     const handleRegister = async (e) => {
         e.preventDefault();
-        const displayName = e.target[0].value;
-        const email = e.target[1].value;
-        const password = e.target[2].value;
-        const file = e.target[3].files[0]
+        const displayName = e.target[1].value;
+        const email = e.target[2].value;
+        const password = e.target[3].value;
+        const file = e.target[4].files[0]
         try {
             const res = await createUserWithEmailAndPassword(auth, email, password)
             const storageRef = ref(storage, displayName);
@@ -80,6 +80,10 @@ const Register = () => {
                     <form onSubmit={handleRegister}>
                         <div className="input-box">
                             <input type="text" required />
+                            <label>Full Name</label>
+                        </div>
+                        <div className="input-box">
+                            <input type="text" required />
                             <label>Display Name</label>
                         </div>
                         <div className="input-box">
@@ -89,6 +93,9 @@ const Register = () => {
                         <div className="input-box">
                             <input type="password" required />
                             <label>Password</label>
+                        </div>
+                        <div className="input-box">
+                            <input type="file" />
                         </div>
                         <button type="submit">Sign up</button>
                     </form>

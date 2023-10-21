@@ -6,7 +6,6 @@ import React,
 } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
-
 const Post = ({ message }) => {
     const { currentUser } = useContext(AuthContext);
     const ref = useRef();
@@ -23,12 +22,13 @@ const Post = ({ message }) => {
                 </div>
                 <div className='userSenderName'>
                     @{message.senderName}
-
                 </div>
             </div>
             <div className='post-title'>
                 {message.text}
-
+            </div>
+            <div className='post-img'>
+                <img src={message.img} alt="" />
             </div>
             {
                 currentUser.uid === message.senderId &&

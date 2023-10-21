@@ -12,6 +12,7 @@ import {
 import Profile from './components/Profile'
 import Login from './pages/Login';
 import Home from './pages/Home';
+import NoPage from './components/NoPage';
 import './style.scss'
 
 
@@ -32,13 +33,14 @@ function App() {
           </ProtectedRouter>}>
           </Route>
           {/* <Route index element={<Home />} /> */}
-          <Route path='home/*' element={<Home />} >
+          <Route path='/*' element={<Home />} >
             <Route path='postsList' element={<PostItems />} />
             {
               currentUser && (
-                <Route path={`profile/${currentUser.displayName}`} element={<Profile />} />
+                <Route path={`${currentUser.displayName}`} element={<Profile />} />
               )
             }
+            <Route path='*' element={<NoPage />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
