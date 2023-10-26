@@ -33,6 +33,15 @@ const PostForm = ({ setIsOpen }) => {
             if (!res.exists()) {
                 await setDoc(doc(db, 'posts', data.postId), { messages: [] });
             }
+            const newMessage = {
+                id: uuid(),
+                text,
+                senderId: currentUser.uid,
+                senderName: currentUser.displayName,
+                senderImg: currentUser.photoURL,
+                date: Timestamp.now(),
+            };
+
             if (img) {
                 const objectName = uuid();
                 const storageRef = ref(storage, objectName);
@@ -47,21 +56,17 @@ const PostForm = ({ setIsOpen }) => {
                     },
                     () => {
                         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                            newMessage.img = downloadURL;
                             await updateDoc(doc(db, 'posts', data.postId), {
-                                messages: arrayUnion({
-                                    id: uuid(),
-                                    text,
-                                    senderId: currentUser.uid,
-                                    senderName: currentUser.displayName,
-                                    senderImg: currentUser.photoURL,
-                                    date: Timestamp.now(),
-                                    img: downloadURL,
-                                }),
+                                messages: arrayUnion(newMessage),
                             });
                         });
                     }
                 );
             } else {
+                await updateDoc(doc(db, 'posts', data.postId), {
+                    messages: arrayUnion(newMessage),
+                });
             }
         } catch (err) {
             setErr(true);

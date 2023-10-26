@@ -14,7 +14,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import NoPage from './components/NoPage';
 import './style.scss'
-
+import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
   const { currentUser } = useContext(AuthContext)

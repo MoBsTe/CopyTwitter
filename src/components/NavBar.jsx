@@ -31,94 +31,60 @@ const NavBar = ({ openModal }) => {
     }
 
     return (
-        <div className='navbar'>
-            <div className='nav'>
-                <div className='nav-items'>
-                    <div className='nav-item '>
-                        <BsTwitter />
-                    </div>
-                    <div className='nav-item'>
+        <div className='d-flex flex-column justify-content-around vh-100 '>
+            <nav className='navbar d-flex flex-column '>
+                <a className="navbar-brand align-items-start" href="#">
+                    <BsTwitter />
+                </a>
+                <ul className="nav flex-column">
+                    <li className="nav-item d-flex align-items-center" >
                         <AiFillHome />
-                        <span>
-                            <Link to='/'>
-                                Home
-                            </Link>
-                        </span>
-                    </div>
-                    <div className='nav-item'>
+                        <Link to='/' className="nav-link active" href="#">Home</Link>
+                    </li>
+                    <li className="nav-item d-flex align-items-center">
                         <BsSearch />
-                        <span>
-                            <Link to='*'>
-                                Explore
-                            </Link>
-                        </span>
-                    </div>
-                    <div className='nav-item'>
+                        <a className="nav-link" href="#">Explore</a>
+                    </li>
+                    <li className="nav-item d-flex align-items-center">
                         <IoNotificationsOutline />
-                        <span>
-                            <Link to='*'>
-                                Notification
-                            </Link>
-                        </span>
-                    </div>
-                    <div className='nav-item'>
+                        <a className="nav-link" href="#">Notification</a>
+                    </li>
+                    <li className="nav-item d-flex align-items-center">
                         <LuMessagesSquare />
-                        <span>
-                            <Link to='*'>
-                                Messages
-                            </Link>
-                        </span>
-                    </div>
-                    <div className='nav-item'>
+                        <a className="nav-link" href="#">Messages</a>
+                    </li>
+                    <li className="nav-item d-flex align-items-center" >
                         <GoChecklist />
-                        <span>
-                            <Link to='*'>
-                                Lists
-                            </Link>
-                        </span>
-                    </div>
-                    <div className='nav-item'>
-                        <BsFillBookmarksFill />
-                        <span>
-                            <Link to='*'>
-                                Bookmarks
-                            </Link>
-                        </span>
-                    </div>
-                    <div className='nav-item'>
+                        <a className="nav-link active" href="#">List</a>
+                    </li>
+                    <li className="nav-item d-flex align-items-center">
                         <TbUsers />
-                        <span>
-                            <Link to='*'>
-                                Communities
-                            </Link>
-                        </span>
-                    </div>
-                    <div className='nav-item'>
+                        <a className="nav-link" href="#">Communities</a>
+                    </li>
+                    <li className="nav-item d-flex align-items-center">
                         <BiUser />
-                        <span>
-                            <Link to={`/${currentUser.displayName}`}>
-                                Profile
-                            </Link>
-                        </span>
+                        <Link to={`/${currentUser.displayName}`} className="nav-link" href="#">Profile</Link>
+                    </li>
+                    <li className="nav-item d-flex align-items-center">
+                        <GoChecklist />
+                        <a className="nav-link" href="#">More</a>
+                    </li>
+                </ul>
+            </nav>
+            <div className='col mt-4 mb-3'>
+                <button className='btn btn-primary' onClick={() => openModal()}>Tweet</button>
+            </div>
+            <div className='card mb-5 '>
+                <div className='card-body d-flex align-items-center justify-content-beetwen'>
+                    <div className='img-users'>
+                        <Link to={`/${currentUser.displayName}`}>
+                            <img src={currentUser.photoURL} className="img-thumbnail" alt="..." />
+                        </Link>
                     </div>
-                    <div className='nav-item'>
-                        <span>
-                            <CgMoreO />
-                            <Link to='*'>
-                                More
-                            </Link>
-                        </span>
-                    </div>
-                    <button onClick={() => openModal()}>Tweet</button>
-                </div>
-                <div className='accountMenu'>
-                    <div className='accountMenu__currentUser-img'>
-                        <img src={currentUser.photoURL} alt="" />
-                    </div>
-                    <div className='accoutnMenu__currentUser-UserName'>
+                    <div className='user-name'>
                         @{currentUser.displayName}
                     </div>
-                    <div className='accountMenu-signOut'>
+                    <div className='signOut'>
                         <RiMoreFill onClick={() => signOut()} />
                     </div>
                 </div>
